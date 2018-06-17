@@ -22,4 +22,4 @@ class Mine:
 
     @all_flagged.setter
     def all_flagged(self, ans):
-        self.__it_exploded = ans
+        self.__all_flagged = ans

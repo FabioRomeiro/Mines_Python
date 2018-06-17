@@ -4,6 +4,9 @@ class Field:
         self.__field = []
         self.__map = []
         self.__minesCoord = []
+        self.__flags_location = []
+        self.__flagged_mines = 0
+        self.__dig_location = []
 
     def __load_file(self,txtfile):
         file = open(txtfile,'r')
@@ -47,3 +50,37 @@ class Field:
         fieldNumbers = ''.join(terrain[0])
         self.__map =  fieldNumbers + self.__map
         return self.__map
+
+    def __process_flag(self,coords,mine):
+        self.__flags_location.append(coords)
+
+        if coords in self.__minesCoord:
+            self.__flagged_mines += 1
+
+        if set(self.__minesCoord) <= set(self.__flags_location):
+            mine.all_flagged = True
+
+        self.__field[coords[0]][coords[1]] = ' FF '
+
+    def __process_dig(self, coords, mine):
+        self.__dig_location.append(coords)
+
+        if coords in self.__minesCoord:
+            mine.it_exploded = True
+        else:
+            self.__field[coords[0]][coords[1]] = '    '
+
+    def processAction(self, data, mine):
+        move = data[0]
+        coords = data[1]
+
+        if move == 'F': self.__process_flag(coords,mine)
+        if move == 'D': self.__process_dig(coords,mine)
+
+    @property
+    def flags_location(self):
+        return self.__flags_location
+
+    @property
+    def flagged_mines(self):
+        return self.__flagged_mines
