@@ -1,9 +1,9 @@
-#Mines
+# Mines
 - Author: Fábio Lucas Romeiro de Castro
 - Year: 2018
 - Language: Python
 
-###TODO:
+### TODO:
 1. Display the numbers indicating how far the mine is;
 2. Upgrade the UX;
 3. Input validators;
