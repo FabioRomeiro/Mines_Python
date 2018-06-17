@@ -5,9 +5,11 @@
 
 ### TODO:
 1. Display the numbers indicating how far the mine is;
-2. Upgrade the UX;
-3. Input validators;
-4. Code refactoring.
+2. Raffle mines location
+3. Randomize field (field generator)
+4. Upgrade the UX;
+5. Input validators;
+6. Code refactoring.
 
 ### About the software
 This is a software developed with the only purpose of study *Object Oriented Python*. That is It.
