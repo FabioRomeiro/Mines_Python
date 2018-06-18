@@ -4,7 +4,7 @@
 - Language: Python
 
 ### TODO:
-1. Display the numbers indicating how far the mine is;
+1. Display the numbers indicating how far you are from the mine;
 2. Raffle mines location
 3. Randomize field (field generator)
 4. Upgrade the UX;
@@ -12,4 +12,4 @@
 6. Code refactoring.
 
 ### About the software
-This is a software developed with the only purpose of study *Object Oriented Python*. That is It.
+This is a software developed with the only purpose of studying *Object Oriented Python*. That is It.
