@@ -62,13 +62,38 @@ class Field:
 
         self.__field[coords[0]][coords[1]] = ' FF '
 
+    def __minesAround(self,coord):
+        numberOfMinesAround = 0
+        quadrant = [(coord[0]+1,coord[1]-1),(coord[0]+1,coord[1]),(coord[0]+1,coord[1]+1),
+                    (coord[0],coord[1]-1),(coord[0],coord[1]),(coord[0],coord[1]+1),
+                    (coord[0]-1,coord[1]-1),(coord[0]-1,coord[1]),(coord[0]-1,coord[1]+1)]
+        for coord in quadrant:
+            if coord in self.__minesCoord: numberOfMinesAround += 1
+        return numberOfMinesAround
+
     def __process_dig(self, coords, mine):
         self.__dig_location.append(coords)
 
         if coords in self.__minesCoord:
+            self.__explode_field()
             mine.it_exploded = True
         else:
-            self.__field[coords[0]][coords[1]] = '    '
+            numberOfMinesAround = self.__minesAround(coords)
+            if numberOfMinesAround == 0:
+                self.__field[coords[0]][coords[1]] = '    '
+            else:
+                self.__field[coords[0]][coords[1]] = ' 0'+str(numberOfMinesAround)+' '
+
+    def __explode_field(self):
+        field = self.__field
+        for x in range(len(field)):
+            for y in range(len(field[x])):
+                if (x,y) in self.__minesCoord:
+                    field[x][y] = ' MM '
+                else:
+                    field[x][y] = '    '
+
+
 
     def processAction(self, data, mine):
         move = data[0]

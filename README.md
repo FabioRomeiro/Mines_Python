@@ -4,12 +4,15 @@
 - Language: Python
 
 ### TODO:
-1. Display the numbers indicating how far you are from the mine;
-2. Raffle mines location
-3. Randomize field (field generator)
-4. Upgrade the UX;
-5. Input validators;
-6. Code refactoring.
+1. ---Display game progress (informations and the map)---
+2. ---Display the how many mines are in your quadrant;---
+3. Flags counter;
+4. Destroy spaces that isn't near to mines after dig a empty space;
+5. Raffle mines location
+6. Randomize field (field generator)
+7. Upgrade the UX;
+8. Input validators;
+9. Code refactoring.
 
 ### About the software
 This is a software developed with the only purpose of studying *Object Oriented Python*. That is It.
