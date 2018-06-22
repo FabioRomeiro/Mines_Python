@@ -24,7 +24,7 @@ class Game:
         self.__playerName = self.__valid_name(input('Please enter with your name: ').strip().title())
         os.system('cls')
         print("Very well, %s, in this game you'll have to flag all the mines in the field." %self.__playerName)
-        print("This is a cool game, so we'll tell you when you flag a mine... And when you step in one...")
+        print("This is a cool game, so we'll tell you when you flag all the mines... And when you step in one...")
         self.__breakLines()
         print("Good luck, try not to die :)")
         self.__pressEnter()
@@ -36,14 +36,13 @@ class Game:
                 name = input("Please enter with your name: ").strip().title()
             return name
 
-    def progress(self,map,flags,discovered):
+    def progress(self,field):
         os.system('cls')
         print("Game progress:")
-        print("Flags (F): %d" %(len(flags)))
-        print("Discovered mines: %d" %discovered)
+        print("Flags (F): %d" %(field.numbers_of_mines - len(field.flags_location)))
         self.__breakLines()
         print("The field: ")
-        print(map)
+        print(field.map)
 
     @property
     def playerName(self):

@@ -15,11 +15,11 @@ def play():
     player.name = game.playerName
 
     while not mines.it_exploded and not mines.all_flagged:
-        game.progress(field.map,field.flags_location,field.flagged_mines)
+        game.progress(field)
         move = player.action
         field.processAction(move, mines)
 
-    game.progress(field.map,field.flags_location,field.flagged_mines)
+    game.progress(field)
 
 if __name__ == '__main__':
     play()

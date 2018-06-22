@@ -1,3 +1,4 @@
+import re
 class Merlin:
     def __init__(self):
         self.__alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -12,7 +13,7 @@ class Merlin:
     def __valid_action(self, action):
         letters_allowed = ['F','D']
         action = action.upper()
-        if action != '' or action in letters_allowed: return action
+        if action != '' and action in letters_allowed: return action
         else:
             while action=='' or action not in letters_allowed:
                 action = input("What you are gonna do? Type 'F' or 'D'\n F = Flag\n D = Dig\n").strip().upper()
@@ -20,11 +21,11 @@ class Merlin:
         pass
 
     def __valid_coord(self, coord):
-        regex = 'coord se encaixa nesse REGEX'
+        pattern = re.compile("[A-Za-z]{1}\d")
         coord = coord.upper()
-        if coord != '' and regex: return coord
+        if coord != '' and pattern.match(coord): return coord
         else:
-            while coord=='' or coord not regex:
+            while coord=='' or not pattern.match(coord):
                 coord = input("Where? (Ex: A12)\n").strip().upper()
             return coord
         pass
